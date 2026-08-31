@@ -1,3 +1,8 @@
 Flask
 opencv-python-headless
+
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.10.0+cpu
+torchvision==0.25.0+cpu
+
 ultralytics
