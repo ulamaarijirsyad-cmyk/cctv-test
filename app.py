@@ -91,12 +91,12 @@ def process_cctv():
         # ==================================
 
         results = model.predict(
-        frame,
-        classes=[0],
-        conf=0.05,
-        imgsz=1280,
-        verbose=False
-)
+            frame,
+            classes=[0],       # hanya PERSON
+            conf=0.05,         # lebih sensitif
+            imgsz=1280,
+            verbose=False
+        )
 
 
         # ==================================
