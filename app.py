@@ -353,9 +353,11 @@ if __name__ == "__main__":
 
     print("SAMSAT AI CCTV SERVER AKTIF")
 
+    port = int(os.environ.get("PORT", "8080"))
+
     app.run(
         host="0.0.0.0",
-        port=int(os.environ.get("PORT", 5000)),
+        port=port,
         debug=False,
         threaded=True
     )
