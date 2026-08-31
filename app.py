@@ -340,6 +340,8 @@ def status():
 # START SERVER
 # ==========================================
 
+import os
+
 if __name__ == "__main__":
 
     thread = threading.Thread(
@@ -349,25 +351,11 @@ if __name__ == "__main__":
 
     thread.start()
 
-
-    print()
-    print("====================================")
-    print("   SAMSAT AI CCTV LOCAL SERVER")
-    print("====================================")
-    print()
-
-    print("BERANDA:")
-    print("http://127.0.0.1:5000")
-    print()
-
-    print("MONITORING CCTV:")
-    print("http://127.0.0.1:5000/monitoring")
-    print()
-
+    print("SAMSAT AI CCTV SERVER AKTIF")
 
     app.run(
-        host="127.0.0.1",
-        port=5000,
+        host="0.0.0.0",
+        port=int(os.environ.get("PORT", 5000)),
         debug=False,
         threaded=True
     )
