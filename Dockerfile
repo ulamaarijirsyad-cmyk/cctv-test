@@ -1,11 +1,12 @@
-FROM python:3.13-slim
+FROM python:3.12-slim
 
 RUN apt-get update && apt-get install -y \
-    libxcb1 \
-    libx11-6 \
+    libgl1 \
+    libglib2.0-0 \
+    libsm6 \
     libxext6 \
     libxrender1 \
-    libglib2.0-0 \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -13,6 +14,10 @@ WORKDIR /app
 COPY requirements.txt .
 
 RUN pip install --no-cache-dir -r requirements.txt
+
+# Paksa gunakan OpenCV headless
+RUN pip uninstall -y opencv-python opencv-contrib-python opencv-python-headless || true \
+    && pip install --no-cache-dir opencv-python-headless
 
 COPY . .
 
